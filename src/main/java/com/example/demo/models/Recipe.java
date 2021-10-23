@@ -17,7 +17,8 @@ public class Recipe {
     @OneToMany
     private Collection<IngredientAmount> ingredientAmounts;
 
-    public Recipe() {}
+    public Recipe() {
+    }
 
     public Recipe(String name) {
         this.name = name;
@@ -31,6 +32,10 @@ public class Recipe {
     public Recipe(String name, String notes, Collection<IngredientAmount> ingredientAmounts) {
         this.name = name;
         this.notes = notes;
+        this.ingredientAmounts = ingredientAmounts;
+    }
+
+    public Recipe(Collection<IngredientAmount> ingredientAmounts) {
         this.ingredientAmounts = ingredientAmounts;
     }
 
@@ -60,5 +65,18 @@ public class Recipe {
 
     public Collection<IngredientAmount> getIngredientAmounts() {
         return ingredientAmounts;
+    }
+
+    public void setAllProps(Recipe incoming) {
+        if (incoming.getName() != null) {
+            this.setName(incoming.getName());
+        }
+        if (incoming.getNotes() != null) {
+            this.setNotes(incoming.getNotes());
+        }
+        if (incoming.getIngredientAmounts() != null) {
+            this.setIngredientAmounts(incoming.getIngredientAmounts());
+        }
+
     }
 }

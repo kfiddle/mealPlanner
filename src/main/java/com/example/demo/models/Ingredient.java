@@ -1,14 +1,17 @@
 package com.example.demo.models;
 
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Entity
+@Embeddable
 public class Ingredient {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+//    @Id
+//    @GeneratedValue
+//    private Long id;
 
     private String name;
 
@@ -19,18 +22,16 @@ public class Ingredient {
         this.name = name;
     }
 
+//    public Long getId() {
+//        return id;
+//    }
+
+
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getName() {
         return name;
     }
 }
-
-//cup = 1/2 pint, 8 fluid ounces 236 ml pounds
-

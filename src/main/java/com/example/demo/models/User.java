@@ -1,11 +1,9 @@
 package com.example.demo.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Collection;
+import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 public class User {
@@ -16,22 +14,13 @@ public class User {
 
     private String name;
 
-    @OneToMany
-    private Collection<Recipe> recipes;
+    @ElementCollection
+    private Map<Ingredient, Integer> amounts;
 
-    public User() {
-    }
+    public User() {}
 
     public User(String name) {
         this.name = name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setRecipes(Collection<Recipe> recipes) {
-        this.recipes = recipes;
     }
 
     public Long getId() {
@@ -40,21 +29,5 @@ public class User {
 
     public String getName() {
         return name;
-    }
-
-    public boolean userHasIngredient(Ingredient ingredientToFind) {
-        boolean flag = false;
-        for (Recipe recipe : recipes) {
-            for (IngredientAmount ingredientAmount : recipe.getIngredientAmounts()) {
-                if (ingredientAmount.getIngredient().getName().equals(ingredientToFind.getName())) {
-                    flag = true;
-                }
-            }
-        }
-        return flag;
-    }
-
-    public Collection<Recipe> getRecipes() {
-        return recipes;
     }
 }

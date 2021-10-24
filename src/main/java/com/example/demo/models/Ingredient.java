@@ -9,11 +9,8 @@ import javax.persistence.Id;
 @Embeddable
 public class Ingredient {
 
-//    @Id
-//    @GeneratedValue
-//    private Long id;
-
     private String name;
+    private int amount;
 
     public Ingredient() {
     }
@@ -22,16 +19,20 @@ public class Ingredient {
         this.name = name;
     }
 
-//    public Long getId() {
-//        return id;
-//    }
-
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

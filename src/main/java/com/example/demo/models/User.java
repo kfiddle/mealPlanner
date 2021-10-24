@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,12 +16,16 @@ public class User {
     private String name;
 
     @ElementCollection
-    private Map<Ingredient, Integer> amounts;
+    private Collection<Ingredient> ingredients;
 
     public User() {}
 
     public User(String name) {
         this.name = name;
+    }
+
+    public void setIngredients(Collection<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Long getId() {
@@ -29,5 +34,9 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public Collection<Ingredient> getIngredients() {
+        return ingredients;
     }
 }
